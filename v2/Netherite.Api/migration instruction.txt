@@ -1,0 +1,3 @@
+
+dotnet ef migrations add Add_interval_id_to_order --project Netherite.Api --startup-project Netherite.Api
+dotnet ef database update --project Netherite.Api --startup-project Netherite.Api

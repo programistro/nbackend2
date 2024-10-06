@@ -1,0 +1,744 @@
+openapi: 3.0.3
+info:
+  title: ASP.NET Core | Entity Framework Core
+  description: |-
+    Данное Rest-API выполняет роль backend части для [NetheriteTrade](https://t.me/netheritetrade_bot/netheriteapp) и может быть использовано для
+    1) Добавление задач
+    2) Регистрации пользователей
+    3) Майнинга виртуальной валюты
+  version: 1.0.11
+servers:
+  - url: https://5.35.81.57
+  - url: http://localhost:5068
+tags:
+  - name: Tasks
+    description: Все запросы, связанные с задачами Tasks
+  - name: User
+    description: Все запросы, связанные с пользовательской информацией
+  - name: Mining
+    description: Все запросы, связанные с майнингом
+paths:
+    /tasks:
+      post:
+        tags:
+          - Tasks
+        summary: Добавить новую Task
+        description: Добавление новой задачи Task
+        operationId: CreateTask
+        parameters:
+          - name: title
+            in: query
+            description: Название задачи
+            required: true
+            schema:
+              type: string
+              example: "Подписаться на канал"
+          - name: description
+            in: query
+            description: Описание задачи
+            required: true
+            schema:
+              type: string
+              example: "Перейдите по ссылке, оформите подписку и нажмите 'Готово'"
+          - name: price
+            in: query
+            description: Награда за выполнение задачи
+            required: true
+            schema:
+              type: string
+              example: "100"
+        responses:
+          '200':
+            description: Задача успешно добавлена
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                    callback:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: "f397aa41-cfa3-481a-b5c8-dec8de1f3ba6"
+          '400':
+            description: Отсутствуют необходимые параметры
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 400
+                    callback:
+                      type: string
+                      example: "Missing required parameters: title, description"
+          '409':
+            description: Price не является числом
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 409
+                    callback:
+                      type: string
+                      example: "Price must be a positive number"
+                      
+      get:
+        tags:
+          - Tasks
+        summary: Список Tasks
+        description: Получить полный список имеющихся Tasks задач
+        operationId: GetTasks
+        responses:
+          '200':
+            description: Коллекция задач успешно получена
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: dbd5a353-583a-441f-8d26-0cd1d7924931
+                      title:
+                        type: string
+                        example: Подписаться на канал
+                      description:
+                        type: string
+                        example: Перейдите по ссылке, оформите подписку и нажмите 'Готово'
+                      price:
+                        type: string
+                        example: 100
+                      icon:
+                        type: string
+                        format: binary
+                        example: iVBORw0KGgoAAAANSUhEUgAA...
+    /tasks/img:
+      post:
+        tags:
+          - Tasks
+        summary: Загрузка изображение для Task
+        description: Загрузка .jpg изображениядля задачи по id Task, выданному при создании задачи
+        operationId: InsertImg
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Реальный id существующей задачи
+                    required: ["id"]
+                  img:
+                    type: string
+                    format: binary
+                    description: Изображение для загрузки
+                    required: ["img"]
+        responses:
+          '200':
+            description: Изображение успешно обновлено
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                    callback:
+                      type: string
+                      example: "Icon updated successfully for task with ID {id}"
+          '404':
+            description: Изображение файла не найдено или задача с таким ID не найдена
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 404
+                    callback:
+                      type: string
+                      example: "Image file not found."
+    
+    /tasks/edit:
+      put:
+        tags:
+          - Tasks
+        summary: Редактировать существующую задачу
+        description: Изменение информации о существующей задаче
+        operationId: editTask
+        parameters:
+          - name: id
+            in: query
+            description: Идентификатор задачи для редактирования
+            required: true
+            schema:
+              type: string
+              example: "f397aa41-cfa3-481a-b5c8-dec8de1f3ba6"
+          - name: title
+            in: query
+            description: Название задачи
+            required: true
+            schema:
+              type: string
+              example: "Подписаться на канал"
+          - name: description
+            in: query
+            description: Описание задачи
+            required: true
+            schema:
+              type: string
+              example: "Перейдите по ссылке, оформите подписку и нажмите 'Готово'"
+          - name: price
+            in: query
+            description: Награда за выполнение задачи
+            required: true
+            schema:
+              type: string
+              example: "150"
+        responses:
+          '200':
+            description: Задача успешно обновлена
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                    callback:
+                      type: string
+                      example: "Task edited successfully"
+          '404':
+            description: Задача с таким ID не найдена
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 404
+                    callback:
+                      type: string
+                      example: "Task with ID {id} not found."
+          '400':
+            description: Id не является UUID
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 400
+                    callback:
+                      type: string
+                      example: "Invalid task ID format."
+    /tasks/remove:
+      delete:
+        tags:
+          - Tasks
+        summary: Удалить задачу
+        description: Удаление существующей задачи по ее идентификатору
+        operationId: removeTask
+        parameters:
+          - name: id
+            in: query
+            description: Идентификатор существующей задачи для удаления
+            required: true
+            schema:
+              type: string
+              example: "f397aa41-cfa3-481a-b5c8-dec8de1f3ba6"
+        responses:
+          '200':
+            description: Задача успешно удалена
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                    message:
+                      type: string
+                      example: "Task removed successfully"
+          '400':
+            description: Неверный формат идентификатора задачи
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 400
+                    callback:
+                      type: string
+                      example: "Invalid task ID format."
+          '404':
+            description: Задача с таким ID не найдена
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 404
+                    callback:
+                      type: string
+                      example: "Task with ID {id} not found."
+    
+    /register:
+      post:
+        tags:
+          - User
+        summary: Регистрация нового пользователя
+        description: Создание нового пользователя в системе
+        operationId: RegisterUser
+        parameters:
+          - name: telegram_id
+            in: query
+            description: Telegram ID пользователя (не путать с @username)
+            required: true
+            schema:
+              type: string
+              example: "123456789"
+          - name: telegram_name
+            in: query
+            description: Имя пользователя в Telegram
+            required: true
+            schema:
+              type: string
+              example: "Иван Иванов"
+          - name: premium
+            in: query
+            description: Простой аккаунт или Премиум аккаунт
+            required: true
+            schema:
+              type: boolean
+              example: false
+          - name: geo
+            in: query
+            description: Географическое положение пользователя
+            required: true
+            schema:
+              type: string
+              example: "Москва"
+          - name: invitedId
+            in: query
+            description: ID приглашающего пользователя
+            required: false
+            schema:
+              type: string
+              nullable: true
+              example: null
+          - name: walletId
+            in: query
+            description: ID кошелька пользователя
+            required: true
+            schema:
+              type: string
+              example: "WALLET_12345"
+          - name: tonUserId
+            in: query
+            description: ID пользователя в Ton
+            required: true
+            schema:
+              type: string
+              example: "TON_USER_67890"
+        responses:
+          '200':
+            description: Регистрация прошла успешно
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                    callback:
+                      type: object
+                      properties:
+                        msg:
+                          type: string
+                          example: "Registration successful"
+                        id:
+                          type: string
+                          format: uuid
+                          example: "f397aa41-cfa3-481a-b5c8-dec8de1f3ba6"
+          '400':
+            description: Неправильный тип ID
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 400
+                    callback:
+                      type: string
+                      example: "Invalid telegram_id format"
+          '409':
+            description: Пользователь с таким ID уже существует
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 409
+                    callback:
+                      type: string
+                      example: "This telegram_id already exists"
+    /user/{telegram_id}:
+      get:
+        tags:
+          - User
+        summary: Получить информацию о пользователе по Telegram ID
+        description: Возвращает данные о пользователе, идентифицированном по его Telegram ID
+        operationId: GetUserByTelegramId
+        parameters:
+          - name: telegram_id
+            in: path
+            description: Telegram ID пользователя (не путать с @username)
+            required: true
+            schema:
+              type: string
+              example: "123456789"
+        responses:
+          '200':
+            description: Информация о пользователе успешно получена
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                    callback:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          example: "f397aa41-cfa3-481a-b5c8-dec8de1f3ba6"
+                        balance:
+                          type: number
+                          example: 1025
+                        tonUserId:
+                          type: string
+                          example: "TON_USER_67890"
+                        walletId:
+                          type: string
+                          example: "WALLET_12345"
+          '404':
+            description: Пользователь с указанным Telegram ID не найден
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      example: 404
+                    callback:
+                      type: string
+                      example: "User not found"
+    /user/{telegram_id}/referals:
+      get:
+        tags:
+          - User
+        summary: Получить список рефералов пользователя по Telegram ID
+        description: Возвращает рефералов пользователя, идентифицированного по его Telegram ID
+        operationId: GetReferalsByTelegramId
+        parameters:
+          - name: telegram_id
+            in: path
+            description: Telegram ID пользователя (не путать с @username)
+            required: true
+            schema:
+              type: string
+              example: "123456789"
+        responses:
+          '200':
+            description: Список рефералов успешно получен
+            content:
+              application/json:
+                schema:
+                  type: object
+                  additionalProperties:
+                    type: object
+                    properties:
+                      profit:
+                        type: number
+                        example: 20
+                        description: Суммарная прибыль с рефералов и подрефералов
+                      referals:
+                        type: integer
+                        example: 0
+                        description: Количество рефералов, привлеченных этим рефералом
+                      telegramName:
+                        type: string
+                        example: "Зубенко Михаил Петрович"
+                        description: Имя пользователя в Telegram
+          '404':
+            description: Не найдено рефералов для указанного Telegram ID
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      example: 404
+                    message:
+                      type: string
+                      example: "No referrals found"
+    /user/{telegram_id}/complete/{task_id}:
+      post:
+        tags:
+          - User
+        summary: Завершить задачу и обновить баланс пользователя
+        description: Завершает задачу Task и обновляет баланс пользователя на основе назначенного администратором вознаграждения
+        operationId: CompleteTask
+        parameters:
+          - name: telegram_id
+            in: path
+            description: Telegram ID пользователя (не путать с @username)
+            required: true
+            schema:
+              type: string
+              example: "123456789"
+          - name: task_id
+            in: path
+            description: UUID существующей задачи
+            required: true
+            schema:
+              type: string
+              example: "f397aa41-cfa3-481a-b5c8-dec8de1f3ba6"
+        responses:
+          '200':
+            description: Задача успешно завершена
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                    message:
+                      type: string
+                      example: "Task completed successfully"
+          '400':
+            description: Неверный формат ID задачи
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 400
+                    message:
+                      type: string
+                      example: "Invalid task ID format"
+          '404':
+            description: Задача или пользователь не найдены
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 404
+                    message:
+                      type: string
+                      example: "Task not found"
+          '500':
+            description: Неожиданная ошибка
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 500
+                    message:
+                      type: string
+                      example: "An unexpected error occurred"
+    /mining/start:
+      post:
+        tags:
+          - Mining
+        summary: Запуск процесса майнинга
+        description: Запускает процесс майнинга для пользователя с указанным UUID. Под капотом так же есть параметр earn, который в теории позволяет регулировать начисление монет за майнинг. Данный параметр используется в **POST /user/{telegram_id}/complete/{task_id}** На данный момент за 1 майнинг начисляется фиксированно 100 монет.
+        operationId: StartMining
+        parameters:
+          - name: id
+            in: query
+            description: UUID пользователя
+            required: true
+            schema:
+              type: string
+              example: "f397aa41-cfa3-481a-b5c8-dec8de1f3ba6"
+        responses:
+          '200':
+            description: Майнинг успешно запущен
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                    callback:
+                      type: boolean
+                      example: null
+          '400':
+            description: Недостает параметра id
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 400
+                    callback:
+                      type: string
+                      example: "Missing required parameter: id"
+          '409':
+            description: Юзер уже майнит. Нельзя начать майнить дважды.
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 409
+                    callback:
+                      type: string
+                      example: "Miner with this id already exists"
+    /mining/complete:
+      get:
+        tags:
+          - Mining
+        summary: Получить оставшееся время майнинга
+        description: Возвращает оставшееся время майнинга для пользователя с указанным идентификатором **Для демонстрации работы время майнинга равно 40 секундам**
+        operationId: CompleteMiningGET
+        parameters:
+          - name: id
+            in: query
+            description: Идентификатор пользователя
+            required: true
+            schema:
+              type: string
+              example: "f397aa41-cfa3-481a-b5c8-dec8de1f3ba6"
+        responses:
+          '200':
+            description: Оставшееся время майнинга успешно получено
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                    callback:
+                      type: number
+                      example: 15
+                      description: Время в секундах
+          '404':
+            description: Юзер не найден
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 404
+                    callback:
+                      type: string
+                      example: "User not found"
+      post:
+        tags:
+          - Mining
+        summary: Завершение процесса майнинга
+        description: Завершает процесс майнинга для пользователя с указанным UUID
+        operationId: CompleteMiningPOST
+        parameters:
+          - name: id
+            in: query
+            description: UUID пользователя
+            required: true
+            schema:
+              type: string
+              example: "f397aa41-cfa3-481a-b5c8-dec8de1f3ba6"
+        responses:
+          '200':
+            description: Возвращает **false**, если еще не время собирать монеты. И **true**, если монеты собраны и можно заново начинат майнить.
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                    callback:
+                      type: boolean
+                      example: true
+          '400':
+            description: Недостает параметра id
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 400
+                    callback:
+                      type: string
+                      example: "Missing required parameter: id"
+          '409':
+            description: Юзер еще не начал майнить, а значит и монеты собрать нельзя
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 409
+                    callback:
+                      type: string
+                      example: "User hasn't started mining yet"

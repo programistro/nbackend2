@@ -1,0 +1,24 @@
+﻿nginx
+
+//статус nginx
+systemctl status nginx 
+
+//рестарт nginx
+sudo systemctl restart nginx //рестарт nginx
+
+//конфигурация nginx
+/etc/nginx/sites-available/api.netherite.pro
+
+порт проекта 5110
+
+----------
+//коннектимся по ssh
+//Переходим в директорию где лежат сборки проекта
+
+cd /var/www/api.netherite.pro_v2
+
+//запуск проекта
+nohup dotnet Netherite.Api.dll > Netherite.Api.log &
+
+//проверка запущенных dotnet проектов
+ps aux | grep dotnet

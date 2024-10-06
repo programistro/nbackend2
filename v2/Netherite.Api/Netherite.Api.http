@@ -1,0 +1,6 @@
+@Netherite.Api_HostAddress = http://localhost:5110
+
+GET {{Netherite.Api_HostAddress}}/
+Accept: application/json
+
+###

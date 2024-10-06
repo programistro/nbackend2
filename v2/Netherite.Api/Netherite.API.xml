@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Netherite.API</name>
+    </assembly>
+    <members>
+        <member name="M:Netherite.API.Controllers.CurrencyPairsController.GetCurrencyPairs">
+            <summary>
+            Получение списка валютных пар
+            </summary>
+        </member>
+        <member name="M:Netherite.API.Controllers.CurrencyPairsController.CreateCurrencyPairs(Netherite.API.Contracts.CurrencyPairsRequest,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Создание валютной пары
+            </summary>
+            <param name="request">Запрос на создание валютной пары содержит имя валютной пары, процент прибыли валюнтой пары.</param>
+            <param name="file">Изображение валютной пары.</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.CurrencyPairsController.UpdateCurrencyPairs(System.Guid,Netherite.API.Contracts.CurrencyPairsRequest,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Обновление валютной пары
+            </summary>
+            <param name="currencyPairId">ID валютной пары</param>
+            <param name="request">Запрос на обновление валютной пары содержит имя валютной пары, процент прибыли валюнтой пары.</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.CurrencyPairsController.DeleteCurrencyPairs(System.Guid)">
+            <summary>
+            Удаление валютной пары
+            </summary>
+            <param name="currencyPairId">ID валютной пары</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.FavoritesController.GetFavoritesCurrencyPairs(System.Guid)">
+            <summary>
+            Получение списка избранных пользователя
+            </summary>
+            <param name="userId">ID пользователя</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.FavoritesController.CreateFavorite(System.Guid,System.Guid)">
+            <summary>
+            Создание избранной валютной пары
+            </summary>
+            <param name="userId">ID пользователя</param>
+            <param name="currencyPairsId">ID валютной пары</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.FavoritesController.DeleteFavorite(System.Guid,System.Guid)">
+            <summary>
+            Удаление валютной пары из избранного
+            </summary>
+            <param name="userId">ID пользователя</param>
+            <param name="currencyPairsId">ID валютной пары</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.IntervalController.GetIntervalsByPairsId(System.Guid)">
+            <summary>
+            Получение списка интервалов валютной пары
+            </summary>
+            <param name="pairsId">ID валютной пары</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.IntervalController.CreateInterval(System.Guid,Netherite.API.Contracts.IntervalsRequest)">
+            <summary>
+            Создание интервала
+            </summary>
+            <param name="pairsId">ID валютной пары для привязки интервала</param>
+            <param name="request">Запрос на создание интервала содержит время интервала.</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.IntervalController.UpdateInterval(System.Guid,Netherite.API.Contracts.IntervalsRequest)">
+            <summary>
+            Обновление данных интервала
+            </summary>
+            <param name="intervalId">ID интервала</param>
+            <param name="request">Запрос на обновление интервала содержит время интервала.</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.IntervalController.DeleteInterval(System.Guid)">
+            <summary>
+            Удаление интервала
+            </summary>
+            <param name="intervalId">ID интервала</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.MinerController.GetTimeOfMining(System.Guid)">
+            <summary>
+            Получает оставшееся время майнинга определенного пользователя
+            </summary>
+            <param name="userId">ID пользователя</param>
+            <returns>Оставшееся время в секундах</returns>
+        </member>
+        <member name="M:Netherite.API.Controllers.MinerController.StartMining(System.Guid)">
+            <summary>
+            Запускает майнинг для опредленного пользователя
+            </summary>
+            <param name="userId">ID пользователя</param>
+            <returns>Булево значение, указывающее, успешно ли начался майнинг.</returns>
+        </member>
+        <member name="M:Netherite.API.Controllers.MinerController.EndMining(System.Guid)">
+            <summary>
+            Заканчивет майнинг определенного пользователя.
+            </summary>
+            <param name="userId">ID пользователя</param>
+            <returns>Булево значение, указывающее, успешно ли закончен майнинг</returns>
+        </member>
+        <member name="M:Netherite.API.Controllers.OrderController.GetOrdersByUserId(System.Guid)">
+            <summary>
+            Получение списка ордеров
+            </summary>
+            <param name="userId">ID пользователя</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.TasksController.GetTasks">
+            <summary>
+            Получение списка заданий
+            </summary>
+        </member>
+        <member name="M:Netherite.API.Controllers.TasksController.CreateTask(Netherite.API.Contracts.TasksRequest)">
+            <summary>
+            Создание задания
+            </summary>
+            <param name="request">Запрос на создание задания содержит заголовок, описание, иконку, награду.</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.TasksController.UpdateTask(System.Guid,Netherite.API.Contracts.TasksRequest)">
+            <summary>
+            Обновление данных задания
+            </summary>
+            <param name="taskId">ID задания</param>
+            <param name="request">Запрос на обновление задания содержит заголовок, описание, иконку, награду.</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.TasksController.DeleteTask(System.Guid)">
+            <summary>
+            Удаление задания
+            </summary>
+            <param name="taskId">ID задания</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.UserController.GetUser(System.Guid)">
+            <summary>
+            Получение определенного пользователя
+            </summary>
+            <param name="userId">ID пользователя</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.UserController.GetUserByWallet(System.String)">
+            <summary>
+            Получение определенного пользователя по номеру кошелька
+            </summary>
+            <param name="wallet">Номер кошелька</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.UserController.GetAvailableTasks(System.Guid)">
+            <summary>
+            Получение доступных пользователю заданий
+            </summary>
+            <param name="userId">ID пользователя</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.UserController.GetReferals(System.Guid)">
+            <summary>
+            Получение рефералов пользователя
+            </summary>
+            <param name="userId">ID пользователя</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.UserController.RegisterUser(Netherite.API.Contracts.UserRequest)">
+            <summary>
+            Регистрация пользователя
+            </summary>
+            <param name="request">Запрос на создание пользователя содержит баланс, локацию, ID пригласившего, премиум, телеграм ID, телеграм имя, номер кошелька.</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.UserController.CompleteTask(System.Guid,System.Guid)">
+            <summary>
+            Выполнение задания
+            </summary>
+            <param name="userId">ID пользователя</param>
+            <param name="taskId">ID задания</param>
+        </member>
+        <member name="M:Netherite.API.Controllers.UserController.UpdateUser(System.Guid,Netherite.API.Contracts.UserRequest)">
+            <summary>
+            Обновление пользователя
+            </summary>
+            <param name="userId">ID пользователя</param>
+            <param name="updatedUserRequest">Запрос на обновление пользователя содержит локацию, ID пригласившего, премиум, телеграм ID, телеграм имя, номер кошелька.</param>
+        </member>
+        <member name="T:Netherite.API.Migrations.init">
+            <inheritdoc />
+        </member>
+        <member name="M:Netherite.API.Migrations.init.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Netherite.API.Migrations.init.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Netherite.API.Migrations.init.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Netherite.API.Migrations.NullableInvitedId">
+            <inheritdoc />
+        </member>
+        <member name="M:Netherite.API.Migrations.NullableInvitedId.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Netherite.API.Migrations.NullableInvitedId.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Netherite.API.Migrations.NullableInvitedId.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Netherite.API.Migrations.ProfitField">
+            <inheritdoc />
+        </member>
+        <member name="M:Netherite.API.Migrations.ProfitField.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Netherite.API.Migrations.ProfitField.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Netherite.API.Migrations.ProfitField.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Netherite.API.Migrations.PartTwoMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:Netherite.API.Migrations.PartTwoMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Netherite.API.Migrations.PartTwoMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Netherite.API.Migrations.PartTwoMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Netherite.API.Migrations.orders">
+            <inheritdoc />
+        </member>
+        <member name="M:Netherite.API.Migrations.orders.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Netherite.API.Migrations.orders.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Netherite.API.Migrations.orders.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netherite.Infrastructure", "..\Netherite.Infrastructure\Netherite.Infrastructure.csproj", "{1EE42960-6253-4205-8977-65B970960D4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netherite.Domain", "..\Netherite.Domain\Netherite.Domain.csproj", "{ECA796C6-D8B5-4045-8085-08B0937DBE15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netherite.Application", "..\Netherite.Application\Netherite.Application.csproj", "{6A59C84C-E07D-4E77-A12D-74D43FB97EEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netherite.Api", "..\Netherite.Api\Netherite.Api.csproj", "{91CC3966-031F-4FED-93D1-639AF7264E08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1EE42960-6253-4205-8977-65B970960D4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EE42960-6253-4205-8977-65B970960D4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EE42960-6253-4205-8977-65B970960D4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EE42960-6253-4205-8977-65B970960D4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECA796C6-D8B5-4045-8085-08B0937DBE15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECA796C6-D8B5-4045-8085-08B0937DBE15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECA796C6-D8B5-4045-8085-08B0937DBE15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECA796C6-D8B5-4045-8085-08B0937DBE15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A59C84C-E07D-4E77-A12D-74D43FB97EEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A59C84C-E07D-4E77-A12D-74D43FB97EEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A59C84C-E07D-4E77-A12D-74D43FB97EEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A59C84C-E07D-4E77-A12D-74D43FB97EEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91CC3966-031F-4FED-93D1-639AF7264E08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91CC3966-031F-4FED-93D1-639AF7264E08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91CC3966-031F-4FED-93D1-639AF7264E08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91CC3966-031F-4FED-93D1-639AF7264E08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D0E2227-F1EE-4504-9F59-3854D2965D0B}
+	EndGlobalSection
+EndGlobal
