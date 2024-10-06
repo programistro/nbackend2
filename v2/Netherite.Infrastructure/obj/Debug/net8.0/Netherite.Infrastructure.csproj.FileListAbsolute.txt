@@ -1,0 +1,17 @@
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Infrastructure\bin\Debug\net8.0\Netherite.Infrastructure.runtimeconfig.json
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Infrastructure\bin\Debug\net8.0\Netherite.Infrastructure.deps.json
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Infrastructure\bin\Debug\net8.0\Netherite.Infrastructure.dll
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Infrastructure\bin\Debug\net8.0\Netherite.Infrastructure.pdb
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Infrastructure\bin\Debug\net8.0\Netherite.Domain.dll
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Infrastructure\bin\Debug\net8.0\Netherite.Domain.pdb
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Infrastructure\obj\Debug\net8.0\Netherite.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Infrastructure\obj\Debug\net8.0\Netherite.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Infrastructure\obj\Debug\net8.0\Netherite.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Infrastructure\obj\Debug\net8.0\Netherite.Infrastructure.AssemblyInfo.cs
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Infrastructure\obj\Debug\net8.0\Netherite.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Infrastructure\obj\Debug\net8.0\Netherite.Infrastructure.sourcelink.json
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Infrastructure\obj\Debug\net8.0\Netherit.5CA77F96.Up2Date
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Infrastructure\obj\Debug\net8.0\Netherite.Infrastructure.dll
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Infrastructure\obj\Debug\net8.0\refint\Netherite.Infrastructure.dll
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Infrastructure\obj\Debug\net8.0\Netherite.Infrastructure.pdb
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Infrastructure\obj\Debug\net8.0\ref\Netherite.Infrastructure.dll

@@ -1,0 +1,8 @@
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Api\obj\Debug\net8.0\Netherite.Api.csproj.AssemblyReference.cache
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Api\obj\Debug\net8.0\Netherite.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Api\obj\Debug\net8.0\Netherite.Api.AssemblyInfoInputs.cache
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Api\obj\Debug\net8.0\Netherite.Api.AssemblyInfo.cs
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Api\obj\Debug\net8.0\Netherite.Api.csproj.CoreCompileInputs.cache
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Api\obj\Debug\net8.0\Netherite.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Api\obj\Debug\net8.0\Netherite.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Api\obj\Debug\net8.0\Netherite.Api.sourcelink.json

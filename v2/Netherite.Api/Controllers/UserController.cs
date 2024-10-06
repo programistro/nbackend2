@@ -8,7 +8,7 @@ using User = Netherite.Domain.Models.User;
 #nullable enable
 namespace Netherite.API.Controllers
 {
-	[ApiController]
+    [ApiController]
     [Authorize]
     [Route("[controller]")]
     public class UserController : ControllerBase
@@ -25,16 +25,17 @@ namespace Netherite.API.Controllers
         /// </summary>
         /// <param name="userId">ID пользователя</param>
         [AllowAnonymous]
-		[HttpGet("{userId}")]
+        [HttpGet("{userId}")]
         public async System.Threading.Tasks.Task<ActionResult<UserResponse>> GetUser(
-          Guid userId)
+            Guid userId)
         {
             try
             {
                 User user = await this._userServices.GetUser(userId);
                 if (user == null)
                     return this.NotFound((object)"Пользователь не найден");
-                UserResponse response = new UserResponse(user.Id, user.Balance, user.Location, user.InvitedId, user.IsPremium, user.TelegramId, user.TelegramName, user.Wallet, user.Profit);
+                UserResponse response = new UserResponse(user.Id, user.Balance, user.Location, user.InvitedId,
+                    user.IsPremium, user.TelegramId, user.TelegramName, user.Wallet, user.Profit);
                 return this.Ok((object)response);
             }
             catch (Exception ex)
@@ -48,16 +49,17 @@ namespace Netherite.API.Controllers
         /// </summary>
         /// <param name="wallet">Номер кошелька</param>
         [AllowAnonymous]
-		[HttpGet("by-wallet/{wallet}")]
+        [HttpGet("by-wallet/{wallet}")]
         public async System.Threading.Tasks.Task<ActionResult<UserResponse>> GetUserByWallet(
-          string wallet)
+            string wallet)
         {
             try
             {
                 User user = await this._userServices.GetUserByWallet(wallet);
                 if (user == null)
                     return this.NotFound((object)"Пользователь не найден");
-                UserResponse response = new UserResponse(user.Id, user.Balance, user.Location, user.InvitedId, user.IsPremium, user.TelegramId, user.TelegramName, user.Wallet, user.Profit);
+                UserResponse response = new UserResponse(user.Id, user.Balance, user.Location, user.InvitedId,
+                    user.IsPremium, user.TelegramId, user.TelegramName, user.Wallet, user.Profit);
                 return this.Ok((object)response);
             }
             catch (Exception ex)
@@ -71,9 +73,9 @@ namespace Netherite.API.Controllers
         /// </summary>
         /// <param name="userId">ID пользователя</param>
         [AllowAnonymous]
-		[HttpGet("tasks/{userId}")]
+        [HttpGet("tasks/{userId}")]
         public async System.Threading.Tasks.Task<ActionResult<List<Netherite.Domain.Models.Task>>> GetAvailableTasks(
-          Guid userId)
+            Guid userId)
         {
             try
             {
@@ -93,7 +95,7 @@ namespace Netherite.API.Controllers
         [AllowAnonymous]
         [HttpGet("referals/{userId}")]
         public async System.Threading.Tasks.Task<ActionResult<Guid>> GetReferals(
-          Guid userId)
+            Guid userId)
         {
             try
             {
@@ -106,17 +108,18 @@ namespace Netherite.API.Controllers
             }
         }
 
-		/// <summary>
-		/// Регистрация пользователя
-		/// </summary>
-		/// <param name="request">Запрос на создание пользователя содержит баланс, локацию, ID пригласившего, премиум, телеграм ID, телеграм имя, номер кошелька.</param>
-		[HttpPost("register")]
+        /// <summary>
+        /// Регистрация пользователя
+        /// </summary>
+        /// <param name="request">Запрос на создание пользователя содержит баланс, локацию, ID пригласившего, премиум, телеграм ID, телеграм имя, номер кошелька.</param>
+        [HttpPost("register")]
         public async System.Threading.Tasks.Task<ActionResult<Guid>> RegisterUser(
-          [FromBody] UserRequest request)
+            [FromBody] UserRequest request)
         {
             try
             {
-                (User user2, string Error2) = Netherite.Domain.Models.User.Create(Guid.NewGuid(), 0M, request.Location, request.InvitedId, request.IsPremium, request.TelegramId, request.TelegramName, request.Wallet, 0);
+                (User user2, string Error2) = Netherite.Domain.Models.User.Create(Guid.NewGuid(), 0M, request.Location,
+                    request.InvitedId, request.IsPremium, request.TelegramId, request.TelegramName, request.Wallet, 0);
                 if (!string.IsNullOrEmpty(Error2))
                     return this.BadRequest((object)Error2);
                 Guid guid = await this._userServices.RegisterUser(user2);
@@ -130,15 +133,15 @@ namespace Netherite.API.Controllers
             }
         }
 
-		/// <summary>
-		/// Выполнение задания
-		/// </summary>
-		/// <param name="userId">ID пользователя</param>
-		/// <param name="taskId">ID задания</param>
-		[HttpPost("complete/{userId}/{taskId}")]
+        /// <summary>
+        /// Выполнение задания
+        /// </summary>
+        /// <param name="userId">ID пользователя</param>
+        /// <param name="taskId">ID задания</param>
+        [HttpPost("complete/{userId}/{taskId}")]
         public async System.Threading.Tasks.Task<ActionResult<Guid>> CompleteTask(
-          Guid userId,
-          Guid taskId)
+            Guid userId,
+            Guid taskId)
         {
             try
             {
@@ -150,29 +153,35 @@ namespace Netherite.API.Controllers
             catch (Exception ex)
             {
                 return this.BadRequest((object)ex.Message);
-            }
-        }
 
-		/// <summary>
-		/// Обновление пользователя
-		/// </summary>
-		/// <param name="userId">ID пользователя</param>
-		/// <param name="updatedUserRequest">Запрос на обновление пользователя содержит локацию, ID пригласившего, премиум, телеграм ID, телеграм имя, номер кошелька.</param>
-		[HttpPut("update/{userId}")]
+            }
+
+            /// <summary>
+            /// Обновление пользователя
+            /// </summary>
+            /// <param name="userId">ID пользователя</param>
+            /// <param name="updatedUserRequest">Запрос на обновление пользователя содержит локацию, ID пригласившего, премиум, телеграм ID, телеграм имя, номер кошелька.</param>
+          
+        }
+        [HttpPut("update/{userId}")]
         public async System.Threading.Tasks.Task<ActionResult<UserResponse>> UpdateUser(
-          Guid userId,
-          [FromBody] UserRequest updatedUserRequest)
+            Guid userId,
+            [FromBody] UserRequest updatedUserRequest)
         {
             try
             {
                 User existingUser = await this._userServices.GetUser(userId);
                 if (existingUser == null)
                     return this.NotFound((object)"Пользователь не найден");
-                (User user3, string Error2) = Netherite.Domain.Models.User.Create(userId, existingUser.Balance, updatedUserRequest.Location, updatedUserRequest.InvitedId, updatedUserRequest.IsPremium, updatedUserRequest.TelegramId, updatedUserRequest.TelegramName, updatedUserRequest.Wallet, existingUser.Profit);
+                (User user3, string Error2) = Netherite.Domain.Models.User.Create(userId, existingUser.Balance,
+                    updatedUserRequest.Location, updatedUserRequest.InvitedId, updatedUserRequest.IsPremium,
+                    updatedUserRequest.TelegramId, updatedUserRequest.TelegramName, updatedUserRequest.Wallet,
+                    existingUser.Profit);
                 if (!string.IsNullOrEmpty(Error2))
                     return this.BadRequest((object)Error2);
                 User user = await this._userServices.UpdateUser(userId, user3);
-                UserResponse response = new UserResponse(user.Id, user.Balance, user.Location, user.InvitedId, user.IsPremium, user.TelegramId, user.TelegramName, user.Wallet, user.Profit);
+                UserResponse response = new UserResponse(user.Id, user.Balance, user.Location, user.InvitedId,
+                    user.IsPremium, user.TelegramId, user.TelegramName, user.Wallet, user.Profit);
                 return this.Ok((object)response);
             }
             catch (Exception ex)

@@ -1,0 +1,12 @@
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Domain\bin\Debug\net8.0\Netherite.Domain.deps.json
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Domain\bin\Debug\net8.0\Netherite.Domain.dll
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Domain\bin\Debug\net8.0\Netherite.Domain.pdb
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Domain\obj\Debug\net8.0\Netherite.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Domain\obj\Debug\net8.0\Netherite.Domain.AssemblyInfoInputs.cache
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Domain\obj\Debug\net8.0\Netherite.Domain.AssemblyInfo.cs
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Domain\obj\Debug\net8.0\Netherite.Domain.csproj.CoreCompileInputs.cache
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Domain\obj\Debug\net8.0\Netherite.Domain.sourcelink.json
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Domain\obj\Debug\net8.0\Netherite.Domain.dll
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Domain\obj\Debug\net8.0\refint\Netherite.Domain.dll
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Domain\obj\Debug\net8.0\Netherite.Domain.pdb
+C:\Users\katana\source\repos\XIIIFOX\nbackend\v2\Netherite.Domain\obj\Debug\net8.0\ref\Netherite.Domain.dll

@@ -248,7 +248,7 @@ namespace Netherite.API.Controllers
 			}
 		}
 
-        [HttpPost("{currencyPairId}/upload")]
+        [HttpPost("{currencyPairId}/uploadv2")]
         public async Task<ActionResult<bool>> UploadIcon(Guid currencyPairId, IFormFile file)
         {
             try
